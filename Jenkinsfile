@@ -32,7 +32,7 @@ pipeline {
                terraform init
                terraform apply -auto-approve -var access_key=${AWS_KEY} -var secret_key=${AWS_SECRET}
                git add terraform.tfstate
-               git -c user.name="Shashwat Tripathi" -c user.email="shashwat2691@gmail.com" commit -m "terraform state update from Jenkins"
+               git -c user.name="Manav Dewan" -c user.email="manavdewan1990@gmail.com" commit -m "terraform state update from Jenkins"
                git push https://${REPO_USER}:${REPO_PASS}@github.com/manavdewan1990/node-app-terraform.git master
             '''
         }
