@@ -10,7 +10,7 @@ pipeline {
         sh 'npm install'
       }
     }
-    if (env.CREATE_AMI)
+    if(env.CREATE_AMI)
     {
       stage('Create Packer AMI') {
             steps {
