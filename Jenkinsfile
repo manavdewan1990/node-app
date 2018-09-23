@@ -10,9 +10,10 @@ pipeline {
         sh 'npm install'
       }
     }
-    if(env.CREATE_AMI)
-    {
-      stage('Create Packer AMI') {
+
+     stage('Create Packer AMI') {
+       if(env.CREATE_AMI)
+          {
             steps {
               withCredentials([
                 usernamePassword(credentialsId: 'ada90a34-30ef-47fb-8a7f-a97fe69ff93f', passwordVariable: 'AWS_SECRET', usernameVariable: 'AWS_KEY')
