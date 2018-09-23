@@ -39,7 +39,7 @@ pipeline {
             sh 'git clone https://github.com/manavdewan1990/node-app-terraform.git'
             sh '''
                cd node-app-terraform
-               terraform init
+               terraform init -var access_key=${AWS_KEY} -var secret_key=${AWS_SECRET}
                terraform apply -auto-approve -var access_key=${AWS_KEY} -var secret_key=${AWS_SECRET}
                git add terraform.tfstate
                git -c user.name="Manav Dewan" -c user.email="manavdewan1990@gmail.com" commit -m "terraform state update from Jenkins"
