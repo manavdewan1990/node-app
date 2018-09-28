@@ -45,9 +45,10 @@ pipeline {
                ls
                cat terraform.tfstate
 
-               git add terraform.tfstate
-               git -c user.name="Manav Dewan" -c user.email="manavdewan1990@gmail.com" commit -m "terraform state update from Jenkins"
+               git add *
+              /* git -c user.name="Manav Dewan" -c user.email="manavdewan1990@gmail.com" commit -m "terraform state update from Jenkins"
                git push https://${REPO_USER}:${REPO_PASS}@github.com/manavdewan1990/node-app-terraform.git master
+               */
             '''
                 }
             }
