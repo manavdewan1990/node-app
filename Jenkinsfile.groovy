@@ -17,6 +17,13 @@ pipeline {
                 script
                         {
                             sh '${params.CREATE_AMI} ${params}'
+                            when {
+                                // Only say hello if a "greeting" is requested
+                                expression { params.CREATE_AMI == true }
+                            }
+                            steps {
+                                echo "Hello, bitwiseman!"
+                            }
                             if (params.CREATE_AMI == 'true') {
                                 withCredentials([
                                         usernamePassword(credentialsId: 'ada90a34-30ef-47fb-8a7f-a97fe69ff93f', passwordVariable: 'AWS_SECRET', usernameVariable: 'AWS_KEY')
