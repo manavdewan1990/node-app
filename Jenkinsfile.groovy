@@ -16,19 +16,13 @@ pipeline {
             steps {
                 script
                         {
-                            sh '${params.CREATE_AMI} ${params}'
-                            when {
-                                // Only say hello if a "greeting" is requested
-                                expression { params.CREATE_AMI == true }
-                            }
-                            steps {
-                                echo "Hello, bitwiseman!"
-                            }
-                            if (params.CREATE_AMI == 'true') {
+                            sh 'echo ${params.CREATE_AMI} ${env.CREATE_AMI}'
+                            if (env.CREATE_AMI == 'true') {
                                 withCredentials([
                                         usernamePassword(credentialsId: 'ada90a34-30ef-47fb-8a7f-a97fe69ff93f', passwordVariable: 'AWS_SECRET', usernameVariable: 'AWS_KEY')
                                 ]) {
 
+                                    sh 'echo YES'
                                     /* sh 'packer build -var aws_access_key=${AWS_KEY} -var aws_secret_key=${AWS_SECRET} packer/packer.json'
                                 */
                                 }
