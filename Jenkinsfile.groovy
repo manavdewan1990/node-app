@@ -44,18 +44,11 @@ pipeline {
                     sh '''
                cd node-app-terraform
                terraform init -var access_key=${AWS_KEY} -var secret_key=${AWS_SECRET} -backend-config="profile=default"
+               sh 'terraform apply -auto-approve -var access_key=${AWS_KEY} -var secret_key=${AWS_SECRET}\'
                ls
 
             '''
-                    script
-                            {
-                                if (env.DESTROY == 'true') {
-                                    sh 'terraform destroy -force -var access_key=${AWS_KEY} -var secret_key=${AWS_SECRET}'
-                                } else {
-                                    sh 'terraform apply -auto-approve -var access_key=${AWS_KEY} -var secret_key=${AWS_SECRET}'
 
-                                }
-                            }
                 }
             }
         }
