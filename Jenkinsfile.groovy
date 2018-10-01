@@ -44,7 +44,7 @@ pipeline {
                     sh '''
                cd node-app-terraform
                terraform init -var access_key=${AWS_KEY} -var secret_key=${AWS_SECRET} -backend-config="profile=default"
-               terraform destroy -force -auto-approve -var access_key=${AWS_KEY} -var secret_key=${AWS_SECRET}
+               terraform destroy -force  -var access_key=${AWS_KEY} -var secret_key=${AWS_SECRET}
                ls
 
             '''
